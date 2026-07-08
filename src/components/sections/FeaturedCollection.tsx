@@ -180,12 +180,12 @@ export default function FeaturedCollection() {
       imageUrl: '/images/logo/products/zeera-biscuit.webp'
     },
     {
-      title: 'Husminaya Biscuit',
+      title: 'Osmania Biscuit',
       category: 'cookies',
       badge: '⭐ House Favorite',
       badgeType: 'default',
-      subtitle: 'Traditional Crispy Biscuit',
-      description: 'Traditional crispy biscuit with a rich homemade taste, perfectly paired with a hot cup of tea.',
+      subtitle: 'Traditional Osmania Biscuit',
+      description: 'Traditional Hyderabad-style Osmania biscuit with a rich buttery flavor and a perfectly crisp texture. Best enjoyed with a hot cup of freshly brewed tea.',
       imageUrl: '/images/logo/products/husminaya- biscuit.webp'
     }
   ];

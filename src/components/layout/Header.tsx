@@ -23,6 +23,18 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent background body scroll when mobile menu drawer is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
     { label: 'Home', href: '#home' },
     { label: 'Menu', href: '#collection' },
@@ -63,39 +75,56 @@ export default function Header() {
             aria-expanded={isMobileMenuOpen}
             aria-label="Toggle Navigation Menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <Menu size={24} />
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer Menu */}
-      <div className={`mobile-drawer ${isMobileMenuOpen ? 'mobile-drawer-open' : ''}`}>
-        <nav className="mobile-nav">
-          <ul className="mobile-nav-list">
-            {navLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="mobile-nav-link"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-            <li>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary mobile-cta"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Order on WhatsApp
-              </a>
-            </li>
-          </ul>
-        </nav>
+      <div className={`mobile-drawer-wrapper ${isMobileMenuOpen ? 'mobile-drawer-open' : ''}`}>
+        <div className="mobile-drawer-backdrop" onClick={() => setIsMobileMenuOpen(false)} />
+        <div className="mobile-drawer-panel">
+          <div className="mobile-drawer-header">
+            <a href="#home" className="mobile-drawer-logo" onClick={() => setIsMobileMenuOpen(false)} aria-label="Funny Tea Home">
+              <img src="/images/logo/funny-tea-logo.png" alt="Funny Tea Logo" className="mobile-drawer-logo-img" />
+            </a>
+            <button
+              className="mobile-drawer-close-btn"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close Navigation Menu"
+            >
+              <X size={24} />
+            </button>
+          </div>
+          
+          <nav className="mobile-drawer-nav">
+            <ul className="mobile-drawer-links">
+              {navLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="mobile-drawer-link"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          
+          <div className="mobile-drawer-footer">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary mobile-drawer-cta"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Order on WhatsApp
+            </a>
+          </div>
+        </div>
       </div>
     </header>
   );
