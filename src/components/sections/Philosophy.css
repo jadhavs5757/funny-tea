@@ -1,0 +1,135 @@
+.philosophy-section {
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* Philosophy Visual Content */
+.philosophy-visual {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.philosophy-image-container {
+  position: relative;
+  z-index: 2;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+}
+
+.philosophy-placeholder {
+  aspect-ratio: 1 / 1.1;
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+}
+
+.placeholder-leaf-icon {
+  color: var(--color-green);
+  opacity: 0.25;
+}
+
+.philosophy-accent-border {
+  position: absolute;
+  top: 20px;
+  left: -20px;
+  right: 20px;
+  bottom: -20px;
+  border: 1px solid var(--color-accent);
+  border-radius: 30px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 576px) {
+  .philosophy-accent-border {
+    display: none;
+  }
+}
+
+/* Philosophy Text & Pillars */
+.philosophy-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.philosophy-title {
+  max-width: 500px;
+}
+
+.philosophy-lead {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.philosophy-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.pillar-card {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  transition: var(--transition-smooth);
+}
+
+.pillar-card:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.pillar-icon-wrapper {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+  transition: var(--transition-bounce);
+}
+
+.pillar-card:hover .pillar-icon-wrapper {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.pillar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pillar-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.pillar-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
